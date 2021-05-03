@@ -18,14 +18,14 @@ class main_screen(QDialog):
         self.main_frame = QVBoxLayout()
 
         # Get UI Elements
-        path_ui = path_box.path_box()
-        option_ui = option_box.option_box()
-        command_ui = command_output.command_box()
-        self.bottom_buttons = bottum_buttons.bottum_buttons()
+        self.path_ui = path_box.path_box()
+        self.option_ui = option_box.option_box()
+        self.command_ui = command_output.command_box()
+        self.bottom_buttons = bottum_buttons.bottum_buttons(self.path_ui, self.option_ui, self.command_ui)
 
-        self.path = path_ui.return_path_box()
-        self.option_box = option_ui.return_options_box()
-        self.command_output = command_ui.return_command_box()
+        self.path = self.path_ui.return_path_box()
+        self.option_box = self.option_ui.return_options_box()
+        self.command_output = self.command_ui.return_command_box()
 
         self.setLayout(self.add_item_to_frame(self.main_frame))
         self.setGeometry(300,400,650,750)

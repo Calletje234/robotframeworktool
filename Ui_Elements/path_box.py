@@ -69,5 +69,14 @@ class path_box:
         self.path_box.addWidget(self.robot_path_entry,1,1)
         self.path_box.addWidget(self.output_path_entry,2,1)
 
+    def get_python_path(self):
+        return self.python_path_entry.text()
+
+    def get_robot_path(self):
+        return self.robot_path_entry.text()
+
+    def get_output_dir_path(self):
+        return self.output_path_entry.text()
+
     def return_path_box(self):
         return self.path_box
