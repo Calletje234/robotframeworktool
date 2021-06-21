@@ -1,12 +1,7 @@
-from PyQt5 import QtCore
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-from datetime import datetime
-import calendar
-import sys
 
-class command_box:
+
+class CommandBox:
     def __init__(self):
         # Create Box
         self.command_output_box = QHBoxLayout()
@@ -21,3 +16,6 @@ class command_box:
 
     def return_command_box(self):
         return self.command_output_box
+
+    def set_command_output(self, output_text):
+        self.command_output_entry.setText(output_text)

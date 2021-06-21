@@ -1,13 +1,9 @@
-from PyQt5 import QtCore
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-from datetime import datetime
-import calendar
-import sys
 
-class option_box:
+
+class OptionBox(QWidget):
     def __init__(self):
+        QWidget.__init__(self)
 
         # Create Box
         self.option_box = QGridLayout()
@@ -60,21 +56,21 @@ class option_box:
         self.set_checkbox_fuction()
 
     def add_item_to_frame(self):
-        self.option_box.addWidget(self.tst,0,0)
-        self.option_box.addWidget(self.tst_inc,1,1)
-        self.option_box.addWidget(self.tst_exc,2,1)
-        self.option_box.addWidget(self.tag,3,0)
-        self.option_box.addWidget(self.tag_inc,4,1)
-        self.option_box.addWidget(self.tag_exc,5,1)
-        self.option_box.addWidget(self.suite,6,0)
-        self.option_box.addWidget(self.suite_inc,7,1)
-        self.option_box.addWidget(self.suite_exc,8,1)
-        self.option_box.addWidget(self.tst_inc_entry,1,2)
-        self.option_box.addWidget(self.tst_exc_entry,2,2)
-        self.option_box.addWidget(self.tag_inc_entry,4,2)
-        self.option_box.addWidget(self.tag_exc_entry,5,2)
-        self.option_box.addWidget(self.suite_inc_entry,7,2)
-        self.option_box.addWidget(self.suite_exc_entry,8,2)
+        self.option_box.addWidget(self.tst, 0, 0)
+        self.option_box.addWidget(self.tst_inc, 1, 1)
+        self.option_box.addWidget(self.tst_exc, 2, 1)
+        self.option_box.addWidget(self.tag, 3, 0)
+        self.option_box.addWidget(self.tag_inc, 4, 1)
+        self.option_box.addWidget(self.tag_exc, 5, 1)
+        self.option_box.addWidget(self.suite, 6, 0)
+        self.option_box.addWidget(self.suite_inc, 7, 1)
+        self.option_box.addWidget(self.suite_exc, 8, 1)
+        self.option_box.addWidget(self.tst_inc_entry, 1, 2)
+        self.option_box.addWidget(self.tst_exc_entry, 2, 2)
+        self.option_box.addWidget(self.tag_inc_entry, 4, 2)
+        self.option_box.addWidget(self.tag_exc_entry, 5, 2)
+        self.option_box.addWidget(self.suite_inc_entry, 7, 2)
+        self.option_box.addWidget(self.suite_exc_entry, 8, 2)
 
     def set_checkbox_fuction(self):
         self.tst.toggled.connect(lambda: self.update_tst_button())
@@ -194,28 +190,40 @@ class option_box:
             self.check_suite_exc = 0
 
     def get_tst_inc_entry(self):
-        tst_inc = self.tst_inc_entry.text()
-        return tst_inc
+        if self.check_tst_inc == 0:
+            return 0
+        else:
+            return self.tst_inc_entry.text()
 
     def get_tst_exc_entry(self):
-        tst_exc = self.tst_exc_entry.text()
-        return tst_exc
+        if self.check_tst_exc == 0:
+            return 0
+        else:
+            return self.tst_exc_entry.text()
 
     def get_tag_inc_entry(self):
-        tag_inc = self.tag_inc_entry.text()
-        return tag_inc
+        if self.check_tag_inc == 0:
+            return 0
+        else:
+            return self.tag_inc_entry.text()
 
     def get_tag_exc_entry(self):
-        tag_exc = self.tag_exc_entry.text()
-        return tag_exc
+        if self.check_tag_exc == 0:
+            return 0
+        else:
+            return self.tag_exc_entry.text()
 
     def get_suite_inc_entry(self):
-        suite_inc = self.suite_inc_entry.text()
-        return suite_inc
+        if self.check_suite_inc == 0:
+            return 0
+        else:
+            return self.suite_inc_entry.text()
 
     def get_suite_exc_entry(self):
-        suite_exc = self.suite_exc_entry.text()
-        return suite_exc
+        if self.check_suite_exc == 0:
+            return 0
+        else:
+            return self.suite_exc_entry.text()
 
     def return_options_box(self):
         return self.option_box

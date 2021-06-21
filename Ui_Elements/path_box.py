@@ -1,13 +1,9 @@
-from PyQt5 import QtCore
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-from datetime import datetime
-import calendar
-import sys
 
-class path_box:
+
+class PathBox(QWidget):
     def __init__(self):
+        QWidget.__init__(self)
 
         # Create Frame
         self.path_box = QGridLayout()
