@@ -25,12 +25,12 @@ class MainScreen(QDialog):
         self.command_output = self.command_ui.return_command_box()
 
         # Create Buttons
-        self.advanced_button = QPushButton("Advanced")
+        # self.advanced_button = QPushButton("Advanced")
         self.cancel_button = QPushButton("Cancel")
         self.run_button = QPushButton("Run")
 
         # Add Function To Buttons
-        self.advanced_button.clicked.connect(lambda: self.advanced_button_clicked())
+        # self.advanced_button.clicked.connect(lambda: self.advanced_button_clicked())
         self.cancel_button.clicked.connect(lambda: self.cancel_button_clicked())
         self.run_button.clicked.connect(lambda: self.run_button_clicked())
 
@@ -39,7 +39,7 @@ class MainScreen(QDialog):
         self.setGeometry(300, 400, 650, 750)
 
     def add_buttons_to_layout(self):
-        self.bottum_buttons.addWidget(self.advanced_button)
+        # self.bottum_buttons.addWidget(self.advanced_button)
         self.bottum_buttons.addWidget(self.cancel_button)
         self.bottum_buttons.addWidget(self.run_button)
 
@@ -61,14 +61,15 @@ class MainScreen(QDialog):
         python_path = self.path_ui.get_python_path()
         robot_path = self.path_ui.get_robot_path()
         output_path = self.path_ui.get_output_dir_path()
+        variable_path = self.path_ui.get_variable_file_path()
         planner_date = self.advanced_window.get_date()
         tst_inc = self.option_ui.get_tst_inc_entry()
-        tst_exc = self.option_ui.get_tst_exc_entry()
+        # tst_exc = self.option_ui.get_tst_exc_entry()
         tag_inc = self.option_ui.get_tag_inc_entry()
         tag_exc = self.option_ui.get_tag_exc_entry()
         suite_inc = self.option_ui.get_suite_inc_entry()
-        suite_exc = self.option_ui.get_suite_exc_entry()
-        command = CommandConstruct(python_path, robot_path, output_path, planner_date, tst_inc, tst_exc, tag_inc,
-                                   tag_exc, suite_inc, suite_exc)
+        # suite_exc = self.option_ui.get_suite_exc_entry()
+        command = CommandConstruct(python_path, robot_path, output_path, variable_path, planner_date, tst_inc,
+                                   tag_inc, tag_exc, suite_inc)
         text = command.construct_command()
         self.command_ui.set_command_output(text)
