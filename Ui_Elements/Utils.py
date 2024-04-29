@@ -1,7 +1,5 @@
 from PyQt5.QtWidgets import QCheckBox, QPushButton, QLineEdit, QVBoxLayout, QLabel, QHBoxLayout
 
-
-
 class WidgetUtils:
     def create_button(self, button_name: str, isEnabled: bool) -> QPushButton:
         button = QPushButton(button_name)
@@ -41,3 +39,10 @@ class WidgetUtils:
             else:
                 layout.addWidget(item)
         return layout
+    
+class StringUtils:
+    def is_string_empty(self, string: str) -> bool:
+        return string == ""
+    
+    def get_only_path(self, path: str) -> str:
+        return path.split("///")[-1]
