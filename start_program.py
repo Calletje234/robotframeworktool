@@ -1,14 +1,29 @@
-import sys
-from PyQt5.QtWidgets import QApplication
-from main_screen import MainScreen
+from Ui_Elements.bottom_layout import BottomLayout
+from Ui_Elements.middel_layout import MiddleLayout
+from Ui_Elements.top_box import TopBox
+from PyQt5.QtWidgets import QApplication, QVBoxLayout, QWidget
 
+def create_window() -> QWidget:
+    window = QWidget()
+    layout = QVBoxLayout()
+    layout.addLayout(get_top_layout())
+    layout.addLayout(get_middle_layout())
+    layout.addLayout(get_bottom_layout())
+    window.setLayout(layout)
+    window.setFixedSize(500, 300)
+    return window
 
-def start():
-    UI = MainScreen()
-    UI.show()
-    return  UI
+def get_top_layout() -> QVBoxLayout:
+    return TopBox().create_layout_and_add_all()
+
+def get_middle_layout() -> QVBoxLayout:
+    return MiddleLayout().create_layout_and_add_all()
+
+def get_bottom_layout() -> QVBoxLayout:
+    return BottomLayout().create_layout_and_add_all()
 
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = start()
+    app = QApplication([])
+    window = create_window()
+    window.show()
     app.exec_()
