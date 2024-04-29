@@ -8,7 +8,7 @@ def create_window() -> QWidget:
     layout = QVBoxLayout()
     layout.addLayout(get_top_layout())
     layout.addLayout(get_middle_layout())
-    layout.addLayout(get_bottom_layout())
+    layout.addLayout(get_bottom_layout(window))
     window.setLayout(layout)
     window.setFixedSize(500, 300)
     return window
@@ -19,8 +19,8 @@ def get_top_layout() -> QVBoxLayout:
 def get_middle_layout() -> QVBoxLayout:
     return MiddleLayout().create_layout_and_add_all()
 
-def get_bottom_layout() -> QVBoxLayout:
-    return BottomLayout().create_layout_and_add_all()
+def get_bottom_layout(main_window: QWidget) -> QVBoxLayout:
+    return BottomLayout().create_layout_and_add_all(main_window)
 
 if __name__ == "__main__":
     app = QApplication([])
